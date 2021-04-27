@@ -17,8 +17,8 @@ namespace testing1
 
         string dato;      //para los datos 
         sbyte index0fZ, index0fY, index0fX, index0fW, index0fV;
-        String dataMod1, dataMod2, dataMod3, dataMod4, dataMod5; 
-
+        String dataMod1, dataMod2, dataMod3, dataMod4, dataMod5;
+        bool StatusButton = true; 
 
         public Form1()
         {
@@ -33,6 +33,36 @@ namespace testing1
 
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+        
+                try
+                {
+                if (StatusButton)
+                {
+                    serialPort1.Write("A2$");
+                    button2.Text = "Axis Disable";
+                    StatusButton = false;
+                    
+                }
+                else {
+                    serialPort1.Write("B2$");
+                    button2.Text = "Axis Enable";
+                    StatusButton = true;
+                }
+
+                }
+                catch (Exception error)
+                {
+
+                    MessageBox.Show(error.Message);
+                } 
+            }
+
+    
+
+        
 
         private void label1_Click(object sender, EventArgs e)
         {
